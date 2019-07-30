@@ -14,10 +14,23 @@
                                 <field name="name" />
                                 <field name="type" />
                                 <field name="display_detail" />
+                                <field name="level" />
                             </tree>
                     </field>
                 </group>
             </notebook>
+        </field>
+    </record>
+
+    <record id="view_account_financial_report_tree" model="ir.ui.view">
+        <field name="name">account.financial.report.tree.children</field>
+        <field name="model">account.financial.report</field>
+        <field name="inherit_id" ref="account.view_account_financial_report_tree"/>
+        <field name="arch" type="xml">
+            <field name="account_report_id" position="after">
+                <field name="parent_id" />
+                <field name="level" />
+            </field>
         </field>
     </record>
 

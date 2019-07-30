@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_financial_report_form" model="ir.ui.view">
+        <field name="name">account.financial.report.children</field>
+        <field name="model">account.financial.report</field>
+        <field name="inherit_id" ref="account.view_account_financial_report_form"/>
+        <field name="arch" type="xml">
+            <notebook position="before">
+                <group>
+                    <field nolabel="1" name="children_ids">
+                            <tree delete="false">
+                                <field name="sequence" />
+                                <field name="name" />
+                                <field name="type" />
+                                <field name="display_detail" />
+                                <field name="level" />
+                            </tree>
+                    </field>
+                </group>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="view_account_financial_report_tree" model="ir.ui.view">
+        <field name="name">account.financial.report.tree.children</field>
+        <field name="model">account.financial.report</field>
+        <field name="inherit_id" ref="account.view_account_financial_report_tree"/>
+        <field name="arch" type="xml">
+            <field name="account_report_id" position="after">
+                <field name="parent_id" />
+                <field name="level" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

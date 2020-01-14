@@ -11,8 +11,10 @@ class AccountFinancialReport(models.Model):
         readonly=True,
         copy=False,
         string='Ancestor',
+        store=True,
     )
 
+    @api.depends('parent_id')
     def _compute_ancestor_id(self):
         for record in self:
             record.ancestor_id = \

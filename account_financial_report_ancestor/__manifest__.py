@@ -23,7 +23,7 @@
     'name': 'Account Financial Report Ancestor',
     'summary': 'Add helper "ancestor" field for financial reports',
     'category': 'Reporting',
-    'version': '10.0.1.1.0',
+    'version': '10.0.1.2.0',
     'website': 'https://github.com/Tawasta/account-financial-reporting',
     'author': 'Oy Tawasta Technologies Ltd.',
     'license': 'AGPL-3',

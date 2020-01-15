@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="view_account_financial_report_form" model="ir.ui.view">
-        <field name="name">account.financial.report.children</field>
+        <field name="name">account.financial.report.archive.form</field>
         <field name="model">account.financial.report</field>
         <field name="inherit_id"
                ref="account.view_account_financial_report_form"/>
@@ -20,7 +20,7 @@
     </record>
 
     <record id="view_account_financial_report_tree" model="ir.ui.view">
-        <field name="name">account.financial.report.children</field>
+        <field name="name">account.financial.report.archive.form</field>
         <field name="model">account.financial.report</field>
         <field name="inherit_id"
                ref="account.view_account_financial_report_tree"/>

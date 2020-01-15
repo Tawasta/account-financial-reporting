@@ -23,7 +23,7 @@
     'name': 'Account Financial Report Archiving',
     'summary': 'Allow archiving account financial reports',
     'category': 'Reporting',
-    'version': '10.0.1.0.1',
+    'version': '10.0.1.0.2',
     'website': 'https://github.com/Tawasta/account-financial-reporting',
     'author': 'Oy Tawasta Technologies Ltd.',
     'license': 'AGPL-3',

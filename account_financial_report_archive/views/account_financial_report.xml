@@ -19,4 +19,16 @@
         </field>
     </record>
 
+    <record id="view_account_financial_report_tree" model="ir.ui.view">
+        <field name="name">account.financial.report.children</field>
+        <field name="model">account.financial.report</field>
+        <field name="inherit_id"
+               ref="account.view_account_financial_report_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="active" invisible="1" />
+            </field>
+        </field>
+    </record>
+
 </odoo>

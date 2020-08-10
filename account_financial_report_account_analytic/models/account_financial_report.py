@@ -11,6 +11,17 @@ class AccountingReport(models.TransientModel):
         copy=False,
         string='Account analytic',
     )
+    @api.model
+    def _get_account_report(self):
+        reports = []
+        if self._context.get('active_id'):
+            menu = self.env['ir.ui.menu'].browse(
+                self._context.get('active_id')
+            ).name
+            reports = self.env['account.financial.report'].search([
+                ('name', 'ilike', menu)
+            ])
+        return reports and reports[0] or False
 
     def _build_comparison_context(self, data):
         result = {}

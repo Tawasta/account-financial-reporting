@@ -12,6 +12,26 @@ class AccountingReport(models.TransientModel):
         string='Account analytic',
     )
 
+    def _build_comparison_context(self, data):
+        result = {}
+        result['journal_ids'] = 'journal_ids'\
+            in data['form'] \
+            and data['form']['journal_ids'] \
+            or False
+        result['account_analytic'] = 'account_analytic' \
+            in data['form'] \
+            and data['form']['account_analytic'] \
+            or False
+        result['state'] = 'target_move' \
+            in data['form'] \
+            and data['form']['target_move'] \
+            or ''
+        if data['form']['filter_cmp'] == 'filter_date':
+            result['date_from'] = data['form']['date_from_cmp']
+            result['date_to'] = data['form']['date_to_cmp']
+            result['strict_range'] = True
+        return result
+
     @api.multi
     def check_report(self):
         res = super(AccountingReport, self).check_report()

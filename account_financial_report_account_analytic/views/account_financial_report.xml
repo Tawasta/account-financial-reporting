@@ -6,7 +6,7 @@
     <field name="model">accounting.report</field>
     <field name="inherit_id" ref="account.accounting_report_view"/>
     <field name="arch" type="xml">
-      <field name="account_report_id" position="before">
+      <field name="account_report_id" position="after">
           <field name="account_analytic"></field>
       </field>
     </field>

@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record id="view_account_financial_report_form" model="ir.ui.view">
-        <field name="name">account.financial.report.account.analytic.form</field>
-        <field name="model">account.financial.report</field>
-        <field name="inherit_id"
-               ref="account.view_account_financial_report_form"/>
-        <field name="arch" type="xml">
-            <field name="name" position="before">
-                <field name="account_analytic" />
-            </field>
-        </field>
-    </record>
+  <record id="accounting_report_view" model="ir.ui.view">
+    <field name="name">accounting.report.form.date_range</field>
+    <field name="model">accounting.report</field>
+    <field name="inherit_id" ref="account.accounting_report_view"/>
+    <field name="arch" type="xml">
+      <field name="account_report_id" position="before">
+          <field name="account_analytic"></field>
+      </field>
+    </field>
+  </record>
 
 </odoo>

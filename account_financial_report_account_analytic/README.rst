@@ -2,12 +2,10 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=================================
-Account Financial Report Ancestor
-=================================
-
-Add helper "ancestor" field for financial reports.
-This will show the highest parent id of any single report.
+===========================================
+Account Financial Report - Account analytic
+===========================================
+Add ability to filter report content with account analytic
 
 Configuration
 =============
@@ -28,7 +26,7 @@ Credits
 Contributors
 ------------
 
-* Jarmo Kortetjärvi <jarmo.kortetjarvi@tawasta.fi>
+* Joona Isoaho <joona.isoaho@tawasta.fi>
 
 Maintainer
 ----------

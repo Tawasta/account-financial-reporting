@@ -2,38 +2,18 @@
 
 <odoo>
     <template id="report_financial_report" inherit_id="account.report_financial">
-        <xpath expr="//table[1]/thead/tr/th" position="after">
-            <th>
-                Account analytic
-            </th>
-        </xpath>
-        <xpath expr="//table[1]/tbody/tr/t/td" position="after">
-            <td>
-                <span style="color: white;" t-esc="'..' * a.get('level', 0)"/>
-                <span t-att-style="style" t-esc="a.get('analytic_account_id')"/>
-            </td>
-        </xpath>
-        <xpath expr="//table[2]/thead/tr/th" position="after">
-            <th>
-                Account analytic
-            </th>
-        </xpath>
-        <xpath expr="//table[2]/tbody/tr/t/td" position="after">
-            <td>
-                <span style="color: white;" t-esc="'..' * a.get('level', 0)"/>
-                <span t-att-style="style" t-esc="a.get('analytic_account_id')"/>
-            </td>
-        </xpath>
-        <xpath expr="//table[3]/thead/tr/th" position="after">
-            <th>
-                Account analytic
-            </th>
-        </xpath>
-        <xpath expr="//table[3]/tbody/tr/t/td" position="after">
-            <td>
-                <span style="color: white;" t-esc="'..' * a.get('level', 0)"/>
-                <span t-att-style="style" t-esc="a.get('analytic_account_id')"/>
-            </td>
+        <xpath expr="//div[@class='col-xs-4'][1]" position="after">
+            <t t-if="data['used_context']['account_analytic_names']">
+                <strong>
+                    Account analytics
+                </strong>
+                <p>
+                    <t t-foreach="data['used_context']['account_analytic_names']"
+                        t-as="a_name">
+                        <t t-esc="a_name"></t>
+                    </t>
+                </p>
+            </t>
         </xpath>
     </template>
 </odoo>

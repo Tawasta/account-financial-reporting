@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields
+import time
+from odoo.exceptions import UserError
+from odoo import api, models, _
 
 
 class ReportFinancial(models.AbstractModel):
@@ -44,3 +46,28 @@ class ReportFinancial(models.AbstractModel):
                 res[row['id']] = row
         return res
 
+    @api.model
+    def render_html(self, docids, data=None):
+        if not data.get('form') or not self.env.context.get('active_model') or not self.env.context.get('active_id'):
+            raise UserError(_("Form content is missing, this report cannot be printed."))
+
+        self.model = self.env.context.get('active_model')
+        docs = self.env[self.model].browse(self.env.context.get('active_id'))
+        report_lines = self.get_account_lines(data.get('form'))
+
+        if 'analytic_ids' in data['form']['used_context']:
+            analytic_ids = data['form']['used_context']['analytic_ids']
+            account_analytics = self.env['account.analytic.account'].sudo().search([]).filtered(lambda r: r.id in analytic_ids)
+            data['form']['used_context']['account_analytic_names'] = account_analytics.mapped('name')
+        else:
+            data['form']['used_context']['account_analytic_names'] = False
+
+        docargs = {
+            'doc_ids': self.ids,
+            'doc_model': self.model,
+            'data': data['form'],
+            'docs': docs,
+            'time': time,
+            'get_account_lines': report_lines,
+        }
+        return self.env['report'].render('account.report_financial', docargs)

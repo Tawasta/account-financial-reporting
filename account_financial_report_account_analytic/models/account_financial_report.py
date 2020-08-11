@@ -14,9 +14,9 @@ class AccountCommonReport(models.TransientModel):
 
     def _build_contexts(self, data):
         result = super(AccountCommonReport, self)._build_contexts(data)
+        if self.account_analytic:
+            result['analytic'] = self.account_analytic.mapped('id')
         print("===================")
         print(result)
         print("===================")
-        if self.analytic_account:
-            result['analytic_account'] = self.analytic_account
         return result

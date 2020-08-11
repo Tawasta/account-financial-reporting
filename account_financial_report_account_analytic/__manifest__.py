@@ -33,8 +33,6 @@
         'analytic',
         'account',
         'account_accountant',
-        'account_analytic_default',
-        'account_financial_report_qweb',
     ],
     'data': [
         'views/account_financial_report.xml',

@@ -50,7 +50,7 @@ class ReportFinancial(models.AbstractModel):
                        " WHERE account_id IN %s " \
                             + filters + \
                     "AND analytic_tag_ids IN %s " \
-                            + ', '.join(analytic_ids) + \
+                            + ', '.join(str(x) for x in analytic_ids) + \
                        " GROUP BY account_id"
             params = (tuple(accounts._ids),) + tuple(where_params)
             self.env.cr.execute(request, params)

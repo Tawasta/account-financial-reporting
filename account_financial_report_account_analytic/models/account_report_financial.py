@@ -28,7 +28,7 @@ class ReportFinancial(models.AbstractModel):
             if analytic_ids:
                 filters = filters \
                     + " " \
-                    + "AND analytic_tag_ids IN " \
+                    + "AND analytic_account_id IN " \
                     + "(" \
                     + ', '.join(map(str, analytic_ids)) \
                     + ")" \

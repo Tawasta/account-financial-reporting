@@ -36,5 +36,6 @@
     ],
     'data': [
         'views/account_financial_report.xml',
+        'report/report_financial.xml',
     ],
 }

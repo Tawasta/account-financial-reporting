@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="report_financial_report" inherit_id="account.report_financial">
+        <xpath expr="//table[1]/thead/tr/th" position="after">
+            <th>
+                Account analytic
+            </th>
+        </xpath>
+        <xpath expr="//table[1]/tbody/tr/t/td" position="after">
+            <td>
+                <span style="color: white;" t-esc="'..' * a.get('level', 0)"/>
+                <span t-att-style="style" t-esc="a.get('analytic_account_id')"/>
+            </td>
+        </xpath>
+        <xpath expr="//table[2]/thead/tr/th" position="after">
+            <th>
+                Account analytic
+            </th>
+        </xpath>
+        <xpath expr="//table[2]/tbody/tr/t/td" position="after">
+            <td>
+                <span style="color: white;" t-esc="'..' * a.get('level', 0)"/>
+                <span t-att-style="style" t-esc="a.get('analytic_account_id')"/>
+            </td>
+        </xpath>
+        <xpath expr="//table[3]/thead/tr/th" position="after">
+            <th>
+                Account analytic
+            </th>
+        </xpath>
+        <xpath expr="//table[3]/tbody/tr/t/td" position="after">
+            <td>
+                <span style="color: white;" t-esc="'..' * a.get('level', 0)"/>
+                <span t-att-style="style" t-esc="a.get('analytic_account_id')"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

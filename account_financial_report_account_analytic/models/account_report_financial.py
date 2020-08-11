@@ -1,25 +1,12 @@
 # -*- coding: utf-8 -*-
-from odoo import api, models, fields
+from odoo import models, fields
 
 
 class ReportFinancial(models.AbstractModel):
     _inherit = "report.account.report_financial"
 
-    def get_account_lines(self, data):
-        print("=================== Data")
-        print(data)
-        print("===================")
-        result = super(ReportFinancial, self).get_account_lines(data)
-        print("=================== Result")
-        print(result)
-        print("===================")
-        return result
-
     def _compute_account_balance(self, accounts):
         analytic_ids = self.env.context.get('analytic_ids') or False
-        print("=================== Context")
-        print(self.env.context)
-        print("===================")
         """ compute the balance, debit and credit for the provided accounts
         """
         mapping = {
@@ -38,20 +25,16 @@ class ReportFinancial(models.AbstractModel):
             if where_clause.strip():
                 wheres.append(where_clause.strip())
             filters = " AND ".join(wheres)
-            if not analytic_ids:
-                request = "SELECT account_id as id, " + ', '.join(mapping.values()) + \
-                       " FROM " + tables + \
-                       " WHERE account_id IN %s " \
-                            + filters + \
-                       " GROUP BY account_id"
-            else:
-                request = "SELECT account_id as id, " + ', '.join(mapping.values()) + \
-                       " FROM " + tables + \
-                       " WHERE account_id IN %s " \
-                            + filters + \
-                    "AND analytic_tag_ids IN %s " \
-                            + ', '.join(map,(str, analytic_ids)) + \
-                       " GROUP BY account_id"
+            if analytic_ids:
+                filters = filters \
+                    + "AND analytic_tag_ids IN " \
+                    + ', '.join(map, (str, analytic_ids))
+
+            request = "SELECT account_id as id, " + ', '.join(mapping.values()) + \
+                " FROM " + tables + \
+                " WHERE account_id IN %s " \
+                + filters + \
+                " GROUP BY account_id"
             params = (tuple(accounts._ids),) + tuple(where_params)
             self.env.cr.execute(request, params)
             for row in self.env.cr.dictfetchall():

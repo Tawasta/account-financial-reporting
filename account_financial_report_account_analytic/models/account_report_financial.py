@@ -27,9 +27,12 @@ class ReportFinancial(models.AbstractModel):
             filters = " AND ".join(wheres)
             if analytic_ids:
                 filters = filters \
+                    + " " \
                     + "AND analytic_tag_ids IN " \
-                    + ', '.join(map(str, analytic_ids))
-
+                    + "(" \
+                    + ', '.join(map(str, analytic_ids)) \
+                    + ")" \
+                    + " "
             request = "SELECT account_id as id, " + ', '.join(mapping.values()) + \
                 " FROM " + tables + \
                 " WHERE account_id IN %s " \

@@ -5,7 +5,7 @@ from odoo import api, models, fields
 class AccountCommonReport(models.TransientModel):
     _inherit = "account.common.report"
 
-    account_analytic = fields.Many2one(
+    account_analytic = fields.Many2many(
         comodel_name='account.analytic.account',
         readonly=False,
         copy=False,

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="report_financial_report" inherit_id="account.report_financial">
+        <xpath expr="//div[@class='col-xs-4'][1]" position="after">
+            <t t-if="data['used_context']['account_analytic_names']">
+                <strong>
+                    Account analytics
+                </strong>
+                <p>
+                    <t t-foreach="data['used_context']['account_analytic_names']"
+                        t-as="a_name">
+                        <t t-esc="a_name"></t>
+                    </t>
+                </p>
+            </t>
+        </xpath>
+    </template>
+</odoo>

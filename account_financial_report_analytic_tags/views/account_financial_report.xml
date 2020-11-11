@@ -2,7 +2,7 @@
 
 <odoo>
     <record id="accounting_report_view" model="ir.ui.view">
-        <field name="name">accounting.report.form.date_range</field>
+        <field name="name">accounting.report.form.analytic.tags</field>
         <field name="model">accounting.report</field>
         <field name="inherit_id" ref="account.accounting_report_view"/>
         <field name="arch" type="xml">

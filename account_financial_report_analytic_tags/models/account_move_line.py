@@ -23,7 +23,7 @@ class AccountMoveLine(models.Model):
                         account_analytic_tag aat ON
                         atml.account_analytic_tag_id = aat.id
                         WHERE aat.id IN (""" +\
-                        ', '.join(map(str, tags)) + """) AND 
+                        ', '.join(map(str, tags)) + """) AND
                         ml.id = account_move_line.id)
                         )
                     THEN CAST(1 AS BOOLEAN)
